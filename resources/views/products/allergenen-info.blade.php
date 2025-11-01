@@ -11,6 +11,12 @@
         <div class="col-md-8">
             <h1>{{ $title }}</h1>
 
+            @if($noAllergens)
+                <div class="alert alert-success mt-4" role="alert">
+                    In dit product zitten geen stoffen die een allergische reactie kunnen veroorzaken
+                </div>
+                <meta http-equiv="refresh" content="4;url={{ route('product.index') }}">
+            @else
                 @if($product)
                     <div class="card mt-4 mb-4">
                         <div class="card-body">
@@ -42,6 +48,7 @@
                 </table>
 
                 <a href="{{ route('product.index') }}" class="btn btn-secondary mt-3">Terug naar overzicht</a>
+            @endif
         </div>
     </div>
 </body>
