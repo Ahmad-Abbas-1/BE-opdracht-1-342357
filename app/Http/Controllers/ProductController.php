@@ -48,4 +48,25 @@ class ProductController extends Controller
         ]);
     }
 
+    public function allergenenInfo($id)
+    {
+        $allergenen = $this->productModel->sp_GetProductAllergenen($id);
+
+        // check of product allergenen heeft
+        if (empty($allergenen)) {
+            return view('products.allergenen-info', [
+                'title' => 'Overzicht Allergenen',
+                'allergenen' => [],
+                'product' => null,
+                'noAllergens' => true
+            ]);
+        }
+
+        return view('products.allergenen-info', [
+            'title' => 'Overzicht Allergenen',
+            'allergenen' => $allergenen,
+            'product' => $allergenen[0],
+            'noAllergens' => false
+        ]);
+    }
 }
