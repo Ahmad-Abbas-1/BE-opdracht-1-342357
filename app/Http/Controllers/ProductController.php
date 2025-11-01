@@ -29,6 +29,17 @@ class ProductController extends Controller
         $leveringen = $this->productModel->sp_GetLeverancierInfo($id);
         $leverancier = $this->productModel->sp_GetLeverantieInfo($id);
 
+        // check of prooduct voorraad heeft
+        if (!empty($leveringen) && $leveringen[0]->AantalAanwezig == 0) {
+            return view('products.leverantie-info', [
+                'title' => 'Levering Informatie',
+                'leveringen' => [],
+                'leverancier' => !empty($leverancier) ? $leverancier[0] : null,
+                'noStock' => true,
+                'nextDelivery' => !empty($leveringen) ? $leveringen[0]->DatumEerstVolgendeLevering : null
+            ]);
+        }
+
         return view('products.leverantie-info', [
             'title' => 'Levering Informatie',
             'leveringen' => $leveringen,
