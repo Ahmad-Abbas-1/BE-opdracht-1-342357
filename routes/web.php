@@ -25,6 +25,7 @@ Route::put('/allergeen/{id}', [AllergeenController::class, 'update'])->name('all
 
 
 Route::get('/', [ProductController::class, 'index'])->name('product.index');
+Route::get('/product/leverantie-info/{id}', [ProductController::class, 'leverantieInfo'])->name('product.leverantieInfo');
 
 
 Route::view('dashboard', 'dashboard')
