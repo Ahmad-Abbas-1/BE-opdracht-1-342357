@@ -11,6 +11,13 @@
         <div class="col-md-10">
             <h1>{{ $title }}</h1>
 
+            @if($noStock)
+                <div class="alert alert-warning mt-4" role="alert">
+                    Er is van dit product op dit moment geen voorraad aanwezig, de verwachte eerstvolgende levering is: 
+                    {{ $nextDelivery ? date('d-m-Y', strtotime($nextDelivery)) : 'Onbekend' }}
+                </div>
+                <meta http-equiv="refresh" content="4;url={{ route('product.index') }}">
+            @else
                 @if($leverancier)
                     <div class="card mt-4 mb-4">
                         <div class="card-body">
@@ -56,6 +63,7 @@
                 </table>
 
                 <a href="{{ route('product.index') }}" class="btn btn-secondary mt-3">Terug naar overzicht</a>
+            @endif
         </div>
     </div>
 </body>
