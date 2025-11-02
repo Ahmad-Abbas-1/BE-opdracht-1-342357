@@ -13,7 +13,7 @@ CREATE TABLE Allergeen (
     ,Naam              VARCHAR(30)                 NOT NULL
     ,Omschrijving      VARCHAR(100)                NOT NULL
     ,IsActief          BIT                         NOT NULL DEFAULT 1
-    ,Opmerkingen       VARCHAR(250)                    NULL DEFAULT NULL
+    ,Opmerkingen       VARCHAR(255)                    NULL DEFAULT NULL
     ,DatumAangemaakt   DATETIME(6)                 NOT NULL DEFAULT NOW(6)
     ,DatumGewijzigd    DATETIME(6)                 NOT NULL DEFAULT NOW(6) ON UPDATE NOW(6)
     ,PRIMARY KEY (Id)
@@ -29,7 +29,7 @@ VALUES
 
 CREATE TABLE Product (
      Id                INT UNSIGNED                NOT NULL AUTO_INCREMENT
-    ,Naam              VARCHAR(255)                NOT NULL
+    ,Naam              VARCHAR(100)                NOT NULL
     ,Barcode           VARCHAR(13)                 NOT NULL
     ,IsActief          BIT                         NOT NULL DEFAULT 1
     ,Opmerkingen       VARCHAR(255)                    NULL DEFAULT NULL
@@ -88,7 +88,7 @@ CREATE TABLE Leverancier (
     ,Naam               VARCHAR(60)                NOT NULL
     ,Contactpersoon     VARCHAR(60)                NOT NULL
     ,Leveranciernummer  VARCHAR(11)                NOT NULL
-    ,Mobiel             VARCHAR(11)                NOT NULL
+    ,Mobiel             VARCHAR(20)                NOT NULL
     ,IsActief           BIT                        NOT NULL DEFAULT 1
     ,Opmerkingen        VARCHAR(255)                   NULL DEFAULT NULL
     ,DatumAangemaakt    DATETIME(6)                NOT NULL DEFAULT NOW(6)
